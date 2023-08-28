@@ -1,37 +1,32 @@
-// Definição da classe Bicicleta
 class Bicicleta {
   constructor(public id: number, public modelo: string, public disponivel: boolean = true) {}
 }
 
-// Definição da classe Usuário
 class Usuario {
   constructor(public id: number, public nome: string) {}
 }
 
-// Definição da classe Aluguel
 class Aluguel {
   constructor(public usuario: Usuario, public bicicleta: Bicicleta, public dataAluguel: Date, public dataDevolucao?: Date) {}
 }
 
-// Definição da classe SistemaAluguelBicicletas
 class SistemaAluguelBicicletas {
   private bicicletas: Bicicleta[] = [];
   private usuarios: Usuario[] = [];
   private alugueis: Aluguel[] = [];
 
-  // Método estático para criar uma nova instância de Bicicleta
+  //cria nova instância de bicicleta
   static criarBicicleta(id: number, modelo: string): Bicicleta {
     const bicicleta = new Bicicleta(id, modelo);
     return bicicleta;
   }
 
-  // Método estático para criar uma nova instância de Usuário
+  //cria nova instância de usuario
   static criarUsuario(id: number, nome: string): Usuario {
     const usuario = new Usuario(id, nome);
     return usuario;
   }
 
-  // Método para alugar uma bicicleta
   alugarBicicleta(idUsuario: number, idBicicleta: number): void {
     const usuario = this.usuarios.find(u => u.id === idUsuario);
     const bicicleta = this.bicicletas.find(b => b.id === idBicicleta);
@@ -52,7 +47,6 @@ class SistemaAluguelBicicletas {
     console.log(`Bicicleta alugada para ${usuario.nome}.`);
   }
 
-  // Método para devolver uma bicicleta alugada
   devolverBicicleta(idBicicleta: number): void {
     const bicicleta = this.bicicletas.find(b => b.id === idBicicleta);
 
@@ -74,14 +68,14 @@ class SistemaAluguelBicicletas {
   }
 }
 
-// Exemplo de uso
+
 const sistemaAluguel = new SistemaAluguelBicicletas();
 
-// Criar bicicletas e um usuário
-const bicicleta1 = SistemaAluguelBicicletas.criarBicicleta(1, "Bike A");
-const bicicleta2 = SistemaAluguelBicicletas.criarBicicleta(2, "Bike B");
+//cria bicicletas e um usuário
+const bicicleta1 = SistemaAluguelBicicletas.criarBicicleta(1, "Bicicleta 1");
+const bicicleta2 = SistemaAluguelBicicletas.criarBicicleta(2, "Bicicleta 2");
 const usuario1 = SistemaAluguelBicicletas.criarUsuario(1, "Usuário");
 
-// Alugar e devolver uma bicicleta
+//aluga e devolve uma bicicleta
 sistemaAluguel.alugarBicicleta(usuario1.id, bicicleta1.id);
 sistemaAluguel.devolverBicicleta(bicicleta1.id);
