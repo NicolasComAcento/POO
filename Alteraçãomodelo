@@ -40,7 +40,7 @@ class App {
 
   addUser(user: User): void {
     if (this.users.some(existingUser => existingUser.email === user.email)) {
-      throw new Error('User with the same email already registered.');
+      throw new Error('Email já existente.');
     }
     user.setPassword(user.password);
     this.users.push(user);
@@ -103,8 +103,7 @@ class App {
     }
 
     bike.availability = true;
-    // Taxa de aluguel modificada para 50.
-    return 50; // Taxa de aluguel de 50.
+    return 50; 
   }
 }
 
